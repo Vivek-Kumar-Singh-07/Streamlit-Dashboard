@@ -4,8 +4,8 @@ import streamlit as st
 st.sidebar.title('SALES DASHBOARD')
 
 #Filters
-st.sidebar.selectbox("Region",['All','Americas','EMEAR','APJC'])
-st.sidebar.selectbox("Segment",['All','Enterprise','Mid-Market','SMB'])
+region_filter=st.sidebar.selectbox("Region",['All','Americas','EMEAR','APJC'])
+segment_filter=st.sidebar.selectbox("Segment",['All','Enterprise','Mid-Market','SMB'])
 
 
 # Columns
@@ -14,7 +14,13 @@ col1, col2, col3,col4 = st.columns(4)
 
 with col1:
     st.subheader('Sales')
-    st.success('$2.5M')
+    # st.success('$2.5M')
+    if region_filter == 'Americas':
+        print(st.success('$2.5M'))
+    elif region_filter=='APJC':
+        print(st.success('$2.8M'))
+    else:
+        print(st.success('$3M'))
 
 with col2:
     st.subheader('Profit')
