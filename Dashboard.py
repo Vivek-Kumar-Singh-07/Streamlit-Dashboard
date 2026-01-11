@@ -1,35 +1,50 @@
 import streamlit as st
+import pandas as pd
 
-#Title in the sidebar
-st.sidebar.title('SALES DASHBOARD')
+# Sidebar title 
+st.sidebar.title('DASHBOARD')
 
-#Filters
-region_filter=st.sidebar.selectbox("Region",['All','Americas','EMEAR','APJC'])
-segment_filter=st.sidebar.selectbox("Segment",['All','Enterprise','Mid-Market','SMB'])
+# Theme
+st.title("""LET'S GET STARTED""")
+
+#file uploader
+
+upload_file = st.file_uploader("Upload a CSV file:", type='csv')
+
+if upload_file is not None:
+    file = pd.read_csv(upload_file) 
+    st.write(file.head(20))
+
+# Column names as filter
+
+if upload_file is not None:
+    column_filter = st.sidebar.selectbox("Filter-1 (X-Axis)", list(file.columns))
+    column_filter1 = st.sidebar.selectbox("Filter-2 (Y-Axis)", list(file.columns))
+else:
+    st.sidebar.error('Upload your file to see Column Names as Filter')
+
+if upload_file is not None:
+    st.subheader(f"Line chart based on {column_filter} and {column_filter1}")
+    st.line_chart(data=file,x=column_filter, y=column_filter1)
 
 
-# Columns
 
-col1, col2, col3,col4 = st.columns(4)
+#Columns
 
-with col1:
-    st.subheader('Sales')
-    # st.success('$2.5M')
-    if region_filter == 'Americas':
-        print(st.success('$2.5M'))
-    elif region_filter=='APJC':
-        print(st.success('$2.8M'))
-    else:
-        print(st.success('$3M'))
+# col1, col2, col3,col4 = st.columns(4)
 
-with col2:
-    st.subheader('Profit')
-    st.success('$1M')
+# with col1:
+#     st.subheader('Sales')
+#     st.success('$5M')
 
-with col3:
-    st.subheader('Partners')
-    st.success('2500')
+# with col2:
+#     st.subheader('Profit')
+#     st.success('$1M')
 
-with col4:
-    st.subheader('Customer')
-    st.success('1.1M')
+# with col3:
+#     st.subheader('Partners')
+#     st.success('2500')
+
+# with col4:
+#     st.subheader('Customer')
+#     st.success('1.1M')
