@@ -7,6 +7,26 @@ st.sidebar.title('DASHBOARD')
 # Theme
 st.title("""LET'S GET STARTED""")
 
+#Columns
+
+col1, col2, col3,col4 = st.columns(4)
+
+with col1:
+    st.subheader('KPI-1')
+    st.success('Coming Soon!')
+
+with col2:
+    st.subheader('KPI-2')
+    st.success('Coming Soon!')
+
+with col3:
+    st.subheader('KPI-3')
+    st.success('Coming Soon!')
+
+with col4:
+    st.subheader('KPI-4')
+    st.success('Coming Soon!')
+
 #file uploader
 
 upload_file = st.file_uploader("Upload a CSV file:", type='csv')
@@ -29,22 +49,3 @@ if upload_file is not None:
 
 
 
-#Columns
-
-# col1, col2, col3,col4 = st.columns(4)
-
-# with col1:
-#     st.subheader('Sales')
-#     st.success('$5M')
-
-# with col2:
-#     st.subheader('Profit')
-#     st.success('$1M')
-
-# with col3:
-#     st.subheader('Partners')
-#     st.success('2500')
-
-# with col4:
-#     st.subheader('Customer')
-#     st.success('1.1M')
