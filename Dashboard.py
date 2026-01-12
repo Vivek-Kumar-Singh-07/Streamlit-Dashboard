@@ -27,6 +27,9 @@ with col4:
     st.subheader('KPI-4')
     st.success('Coming Soon!')
 
+
+st.divider()
+
 #file uploader
 
 upload_file = st.file_uploader("Upload a CSV file:", type='csv')
